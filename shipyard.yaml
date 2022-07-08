@@ -10,18 +10,16 @@ spec:
       tasks:
       - name: deployment
         properties:
-          deploymentstrategy: blue_green_service
+          deploymentstrategy: direct
       - name: test
         properties:
           teststrategy: performance
       - name: evaluation
-        properties: null
       - name: approval
         properties:
           pass: automatic
           warning: automatic
       - name: release
-        properties: null
     - name: rollback
       triggeredOn:
       - event: staging.delivery.finished
@@ -35,17 +33,7 @@ spec:
       - name: deployment
         properties:
           deploymentstrategy: direct
-      - name: test
-        properties:
-          teststrategy: performance
-      - name: evaluation
-        properties: null
-      - name: approval
-        properties:
-          pass: automatic
-          warning: automatic
       - name: release
-        properties: null
   - name: prod
     sequences:
     - name: delivery
@@ -54,18 +42,16 @@ spec:
       tasks:
       - name: deployment
         properties:
-          deploymentstrategy: blue_green_service
+          deploymentstrategy: direct
       - name: test
         properties:
           teststrategy: ""
       - name: evaluation
-        properties: null
       - name: approval
         properties:
           pass: automatic
           warning: automatic
       - name: release
-        properties: null
     - name: rollback
       triggeredOn:
       - event: prod.delivery.finished
@@ -81,15 +67,5 @@ spec:
       - name: deployment
         properties:
           deploymentstrategy: direct
-      - name: test
-        properties:
-          teststrategy: ""
-      - name: evaluation
-        properties: null
-      - name: approval
-        properties:
-          pass: automatic
-          warning: automatic
       - name: release
-        properties: null
-
+      
